@@ -1,23 +1,13 @@
 server {
-  root /var/www;
-  index index.html index.htm;
+  listen 80;
 
-  # Make site accessible from http://getwarm.io/
-  server_name getwarm.io;
+  server_name www.getwarm.io getwarm.io dev.l0cal;
 
-  # Add 1 day expires header for static assets
-  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-    expires 1d;
-  }
+        root /app/src;
+        index index.html;
 
-  location / {
-    # First attempt to serve request as file, then
-    # as directory, then fall back to redirecting to index.html
-    try_files $uri $uri/ @root;
-  }
-
-  # If nginx can't find a file, fallback to the homepage.
-  location @root {
-    rewrite .* / redirect;
-  }
+        location / {
+                try_files $uri $uri/ =404;
+        }
+    }
 }
