@@ -1,3 +1,5 @@
 .DS_Store
 
 *.scssc
+
+docker/dist/info.json
