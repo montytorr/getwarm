@@ -7,7 +7,7 @@ var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 
-var moduleName = 'Wabb';
+var moduleName = 'getwarm';
 
 var $ = require('gulp-load-plugins')({
     pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
@@ -79,7 +79,7 @@ gulp.task('compass', function() {
         require: ['susy']
     }))
     .pipe(autoprefixer('last 2 versions'))
-    .pipe(gulp.dest('../src/css/'));
+    .pipe(gulp.dest('dist/css/'));
 });
 
 gulp.task('build', [

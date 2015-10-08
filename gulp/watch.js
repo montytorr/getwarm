@@ -12,7 +12,7 @@ var plumber = require('gulp-plumber');
 
 // Paths definitions.
 var path = {
-    app_js: ['./src/js/app.js'],
+    app_js: ['./src/js/main.js'],
     jsx_files: ['./src/js/**/*.js*', '!./src/js/bundle.js'],
     scss_files: ['./src/scss/**/*.scss']
 };
