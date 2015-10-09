@@ -1,0 +1,23 @@
+.discover-component {
+    text-align: center;
+    position: relative;
+    z-index: $middle;
+    height: 100vh;
+    line-height: 100vh;
+    background-color: #eeeeee;
+}
+
+.discover-container {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1000px;
+    height: 750px;
+    line-height: normal;
+    color: $warm-black;
+}
+
+.discover-box {
+    margin-top: 50px;
+    background-color: $green;
+    height: 600px;
+}

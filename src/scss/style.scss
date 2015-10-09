@@ -3,4 +3,14 @@
 @import "breakpoint";
 
 // BASE STYLES ---------------------------------
+@import "dimentions";
+@import "colors";
+@import "fonts";
+@import "reset";
 @import "base";
+
+// COMPONENTS STYLES ---------------------------------
+@import "components/header";
+@import "components/download";
+@import "components/about";
+@import "components/discover";

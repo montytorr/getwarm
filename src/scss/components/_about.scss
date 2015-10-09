@@ -1,0 +1,28 @@
+.about-component {
+    text-align: center;
+    position: relative;
+    z-index: $middle;
+    height: 100vh;
+    line-height: 100vh;
+    background-color: #fff;
+    box-shadow: 0px 0px 33px rgba(0,0,0,0.7);
+}
+
+.about-container {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1000px;
+    height: 400px;
+    line-height: normal;
+    color: #373737;
+}
+
+.about-paragraph {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1000px;
+    line-height: normal;
+    color: #373737;
+    text-align: justify;
+    text-justify: inter-word;
+}
