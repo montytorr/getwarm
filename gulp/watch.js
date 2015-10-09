@@ -12,12 +12,23 @@ var plumber = require('gulp-plumber');
 
 // Paths definitions.
 var path = {
+    html_files: ['./src/**/*.html'],
     app_js: ['./src/js/main.js'],
     jsx_files: ['./src/js/**/*.js*', '!./src/js/bundle.js'],
     scss_files: ['./src/scss/**/*.scss']
 };
 
-// JS task: Browserify the code, compile React JSX files and bundle the JS.
+////////////////////////////////////////////////////////////////////////////////
+// HTML Tasks
+////////////////////////////////////////////////////////////////////////////////
+gulp.task('html', function() {
+    gulp.src(html_files)
+    .pipe(reload({stream:true}));
+});
+
+////////////////////////////////////////////////////////////////////////////////
+// JS Task: Browserify the code, compile React JSX files and bundle the JS.
+////////////////////////////////////////////////////////////////////////////////
 gulp.task('js', ['clean'], function() {
     browserify(path.app_js)
     .transform({global:true},reactify)
@@ -44,8 +55,11 @@ gulp.task('compass-rebuild', function() {
     .pipe(reload({stream:true}));
 });
 
+////////////////////////////////////////////////////////////////////////////////
 // Rerun tasks whenever a file changes.
+////////////////////////////////////////////////////////////////////////////////
 gulp.task('watch', function() {
+    gulp.watch(path.html_files, ['html']);
     gulp.watch(path.jsx_files, ['js']);
     gulp.watch(path.scss_files, ['compass-rebuild']);
 });

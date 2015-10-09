@@ -1,7 +1,5 @@
 /* global require */
-
 var gulp = require('gulp');
-var debug = require('gulp-debug');
 var debug = require('gulp-debug');
 var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
@@ -82,6 +80,9 @@ gulp.task('compass', function() {
     .pipe(gulp.dest('dist/css/'));
 });
 
+////////////////////////////////////////////////////////////////////////////////
+//XX BUILD TASK
+////////////////////////////////////////////////////////////////////////////////
 gulp.task('build', [
     'js',
     'compass',
