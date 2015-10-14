@@ -1,11 +1,15 @@
 .about-component {
     text-align: center;
     position: relative;
-    z-index: $middle;
-    height: 100vh;
-    line-height: 100vh;
+    height: 50vh;
+    line-height: 50vh;
     background-color: #fff;
-    box-shadow: 0px 0px 33px rgba(0,0,0,0.7);
+    box-sizing: border-box;
+    border-top: 10px solid $dark-green;
+}
+
+.about-component .down-arrow {
+    border-color: $dark-green transparent transparent transparent;
 }
 
 .about-container {

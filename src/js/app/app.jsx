@@ -1,48 +1,54 @@
-var React = require('react');
+var React = require('react')
+var $ = require('jquery');
+var Index = require('./index.jsx');
+var Man = require('./man.jsx');
+var ulList = ['WARM', 'Header', 'Login', 'Tile', 'Another', 'Element', 'Last'];
 
 var WarmApp = React.createClass({
+    getInitialState: function() {
+        return ({
+            quote: 'Be',
+            page: Index
+        });
+    },
+    changePage: function(i) {
+        if(i == 1) {
+            this.setState({
+                page: Index
+            });
+        } else {
+            this.setState({
+                page: Man
+            });
+        }
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    },
+    componentDidMount: function() {
+        // $.get("https://raw.githubusercontent.com/maestro-tech/MaestroForm/master/README.md", function(result) {
+        //     if (this.isMounted()) {
+        //         this.setState({
+        //             readme: marked(result, {sanitize: true})
+        //         });
+        //     }
+        // }.bind(this));
+    },
     render: function() {
+        var i = 0;
+        that = this;
         return (
-            <div>
-                <div className="head-component">
-                    <div className="head-home-button">
-                        <h3>WARM</h3>
-                    </div>
-                    <div className="head-anchor-list">
-                        <ul>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#discover">Discover</a></li>
-                        </ul>
-                    </div>
+            <div className="view-container">
+                <div className="left-menu">
+                    <ul>
+                        {
+                            ulList.map(function (listValue) {
+                                i++;
+                                var boundClick = that.changePage.bind(that, i);
+                                return <li className={(i == 1) ? 'menu-title' : 'menu-elem'}><a onClick={boundClick}>{listValue}</a></li>;
+                            })
+                        }
+                    </ul>
                 </div>
-                <div className="download-component">
-                    <div className="download-container">
-                        <h1>WARM</h1>
-                        <h3>- We Are React Masters -</h3>
-                        <button className="download-button">Be WARM</button>
-                    </div>
-                </div>
-                <div id="about" className="about-component">
-                    <div className="about-container">
-                        <h2>' What is WARM? '</h2>
-                        <br></br>
-                        <div className="about-paragraph">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <br></br>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <br></br>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="discover" className="discover-component">
-                    <div className="discover-container">
-                        <h2>' Discover WARM '</h2>
-                        <div className="discover-box">
-
-                        </div>
-                    </div>
-                </div>
+                <this.state.page />
             </div>
         );
     }

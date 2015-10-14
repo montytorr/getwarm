@@ -1,0 +1,17 @@
+.man-container {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.man-container h2 {
+    font-size: 30pt;
+    margin: 40px 0 20px 0;
+}
+
+.man-container ul {
+    font-family: $light-font;
+    font-weight:400;
+    font-size: 13pt;
+    list-style-type: initial;
+    margin: 20px 0 20px 60px;
+}

@@ -4,7 +4,11 @@
     z-index: $middle;
     height: 100vh;
     line-height: 100vh;
-    background-color: #eeeeee;
+    background-color: $grey;
+}
+
+.discover-component .down-arrow {
+    border-color: #fff transparent transparent transparent;
 }
 
 .discover-container {
@@ -13,7 +17,7 @@
     width: 1000px;
     height: 750px;
     line-height: normal;
-    color: $warm-black;
+    color: $black;
 }
 
 .discover-box {
