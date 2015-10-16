@@ -1,5 +1,7 @@
 var React = require('react')
 var $ = require('jquery');
+var showdown  = require('showdown'),
+converter = new showdown.Converter();
 
 var ManPage = React.createClass({
     getInitialState: function() {
@@ -9,11 +11,11 @@ var ManPage = React.createClass({
     },
     componentDidMount: function() {
         $.get("https://raw.githubusercontent.com/maestro-tech/MaestroForm/master/README.md", function(result) {
-        // $.get("/js/app/test.md", function(result) {
+            // $.get("/js/app/test.md", function(result) {
             result = result.split("!!!");
             console.log(result);
             for (var i = 0; i < result.length; i++) {
-                result[i] = marked(result[i], {sanitize: true});
+                result[i] = converter.makeHtml(result[i]);
             }
             if (this.isMounted()) {
                 this.setState({
