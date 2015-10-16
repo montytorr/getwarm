@@ -29031,6 +29031,7 @@ var ulList = ['WARM', 'Header', 'Login', 'Tile', 'Another', 'Element', 'Last'];
 var WarmApp = React.createClass({displayName: "WarmApp",
     getInitialState: function() {
         return ({
+            listing: [],
             quote: 'Be',
             page: Index
         });
@@ -29048,13 +29049,20 @@ var WarmApp = React.createClass({displayName: "WarmApp",
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
     componentDidMount: function() {
-        // $.get("https://raw.githubusercontent.com/maestro-tech/MaestroForm/master/README.md", function(result) {
-        //     if (this.isMounted()) {
-        //         this.setState({
-        //             readme: marked(result, {sanitize: true})
-        //         });
-        //     }
-        // }.bind(this));
+        var index = ['WARM'];
+        var component = null;
+        $.get("https://github.com/maestro-tech/warm/tree/master/src/components", function(result) {
+            result = result.replace(/(\r\n|\n|\r)/gm," ").split("js-directory-link");
+            for (var i = 1; i < result.length; i++) {
+                component = /title=.*>(.*)<\/a></.exec(result[i])[1];
+                index.push(component.charAt(0).toUpperCase() + component.substring(1).toLowerCase());
+            }
+            if (this.isMounted()) {
+                this.setState({
+                    listing: index
+                });
+            }
+        }.bind(this));
     },
     render: function() {
         var i = 0;
@@ -29064,7 +29072,7 @@ var WarmApp = React.createClass({displayName: "WarmApp",
                 React.createElement("div", {className: "left-menu"}, 
                     React.createElement("ul", null, 
                         
-                            ulList.map(function (listValue) {
+                            this.state.listing.map(function (listValue) {
                                 i++;
                                 var boundClick = that.changePage.bind(that, i);
                                 return React.createElement("li", {className: (i == 1) ? 'menu-title' : 'menu-elem'}, React.createElement("a", {onClick: boundClick}, listValue));
@@ -29154,14 +29162,20 @@ var $ = require('jquery');
 var ManPage = React.createClass({displayName: "ManPage",
     getInitialState: function() {
         return ({
-            readme: ''
+            readme: []
         });
     },
     componentDidMount: function() {
         $.get("https://raw.githubusercontent.com/maestro-tech/MaestroForm/master/README.md", function(result) {
+        // $.get("/js/app/test.md", function(result) {
+            result = result.split("!!!");
+            console.log(result);
+            for (var i = 0; i < result.length; i++) {
+                result[i] = marked(result[i], {sanitize: true});
+            }
             if (this.isMounted()) {
                 this.setState({
-                    readme: marked(result, {sanitize: true})
+                    readme: result
                 });
             }
         }.bind(this));
@@ -29169,7 +29183,13 @@ var ManPage = React.createClass({displayName: "ManPage",
     render: function() {
         return (
             React.createElement("div", {className: "main-container"}, 
-                React.createElement("div", {className: "man-container", dangerouslySetInnerHTML: {__html: this.state.readme}})
+                React.createElement("div", {className: "man-container"}, 
+                    
+                        this.state.readme.map(function (value) {
+                            return React.createElement("div", {dangerouslySetInnerHTML: {__html: value}});
+                        })
+                    
+                )
             )
         );
     }

@@ -4,14 +4,20 @@ var $ = require('jquery');
 var ManPage = React.createClass({
     getInitialState: function() {
         return ({
-            readme: ''
+            readme: []
         });
     },
     componentDidMount: function() {
         $.get("https://raw.githubusercontent.com/maestro-tech/MaestroForm/master/README.md", function(result) {
+        // $.get("/js/app/test.md", function(result) {
+            result = result.split("!!!");
+            console.log(result);
+            for (var i = 0; i < result.length; i++) {
+                result[i] = marked(result[i], {sanitize: true});
+            }
             if (this.isMounted()) {
                 this.setState({
-                    readme: marked(result, {sanitize: true})
+                    readme: result
                 });
             }
         }.bind(this));
@@ -19,7 +25,13 @@ var ManPage = React.createClass({
     render: function() {
         return (
             <div className="main-container">
-                <div className="man-container" dangerouslySetInnerHTML={{__html: this.state.readme}} />
+                <div className="man-container">
+                    {
+                        this.state.readme.map(function (value) {
+                            return <div dangerouslySetInnerHTML={{__html: value}} />;
+                        })
+                    }
+                </div>
             </div>
         );
     }
