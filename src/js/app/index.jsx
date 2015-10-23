@@ -1,4 +1,5 @@
 var React = require('react')
+var discoverTest = ['Be', 'Get', 'Have', 'Become', 'Join', 'Feel', 'Steal', '42', 'I\'m', 'Oh my', 'Love', 'Like'];
 
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -51,7 +52,13 @@ var Index = React.createClass({
                     <div className="discover-container">
                         <h2>' Discover WARM '</h2>
                         <div className="discover-box">
-                            <div dangerouslySetInnerHTML={{__html: that.state.readme}} />
+                            <ul>
+                                {
+                                    discoverTest.map(function (listValue) {
+                                        return <li><div className="discover-elem-back">{listValue}</div><div className="discover-elem-front"></div></li>;
+                                    })
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>

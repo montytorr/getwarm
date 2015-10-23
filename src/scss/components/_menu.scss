@@ -39,6 +39,19 @@
     color: #E15C56;
 }
 
+.left-menu li.menu-sub-title a {
+    display: inline-block;
+    width: calc(100% - 25px);
+    padding: 10px 0px 10px 15px;
+    margin: 0px 5px 10px 5px;
+    font-family: $light-font;
+    font-size: 18pt;
+    font-weight: 400;
+    color: #fff;
+    border-bottom: solid 1px #474747;
+    transition: 0.2s;
+}
+
 .left-menu li.menu-elem a {
     width: 100%;
     display: inline-block;
