@@ -63,10 +63,18 @@
     transition: 0.2s;
 }
 
+.left-menu li.man a {
+    color: $blue;
+}
+
+.left-menu li.menu-elem.targeted {
+    width: 140px;
+}
+
 .left-menu li.menu-elem a:hover {
     color: #fff;
     padding: 10px 0px 5px 15px;
-    margin-right: 20px;
+    margin-right: 100px;
 }
 
 .left-menu a:link

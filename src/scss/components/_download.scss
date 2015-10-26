@@ -1,38 +1,132 @@
 .download-component {
     text-align: center;
-    position: relative;
-    height: 50vh;
-    line-height: 50vh;
-    background-color: $green;
+    height: 625px;
 }
 
 .download-container {
+    margin:auto auto;
     display: inline-block;
     vertical-align: middle;
     width: 700px;
-    height: 300px;
-    line-height: normal;
-    color: #fff;
+    color: $black-hover;
 }
 
-.download-button {
-    margin-top: 50px;
-    width: 400px;
+.sub-container {
+    display: inline-flex;
+    width: 100%;
+    &.title {
+        height: 300px;
+    }
+    &.download {
+        height: 250px;
+    }
+}
+
+.desc-container {
+    margin-bottom: 30px;
+    h1 i {
+        color: $red;
+    }
+    h3 {
+        margin-top: 15px;
+        font-family: $light-font;
+        font-weight: 200;
+    }
+}
+
+.npm-container {
+    width: 100%;
+    min-width: 500px;
+    height: 75px;
+    background-color: $grey;
+    border-top: 2px solid $dark-grey;
+    border-bottom: 2px solid $dark-grey;
+    box-sizing: border-box;
+    p {
+        font-family: Menlo, Monaco, Consolas, monospace;
+        color: #7E7E7E;
+        font-size: 16pt;
+        line-height: 70px;
+    }
+}
+
+.button-container {
+    display: inline-block;;
+    min-width: 500px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    h3 {
+        vertical-align: top;
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        margin-top: 0px;
+        font-family: $light-font;
+        font-weight: 200;
+        box-sizing: border-box;
+        line-height: 40px;
+        &.use {
+            color: $green;
+            border: 2px solid $green;
+        }
+        &.contribute {
+            color: $blue;
+            border: 2px solid $blue;
+        }
+    }
+}
+
+.front {
+    min-width: 500px;
+    position: absolute;
+    z-index: $front;
+}
+
+.back {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    z-index: $behind;
+    &.down {
+        text-align: right;
+    }
+    &.up {
+        text-align: left;
+    }
+}
+
+button {
+    width: 350px;
     height: 50px;
     color: #fff;
-    background-color: $dark-green;
     font-size: 20pt;
     font-family: $light-font;
     font-weight: 100;
-    border: 4px solid white;
-    border-radius: 5px;
+    border: none;
     transition: 0.2s;
-}
-
-.download-button:hover {
-    margin-top: 45px;
-    width: 420px;
-    height: 60px;
-    cursor: pointer;
-    background-color: $green;
+    &.download-button {
+        background-color: $green;
+        text-align: left;
+        i {
+            margin-left: 100px;
+        }
+        &:hover {
+            width: 290px;
+            margin-right: 60px;
+            cursor: pointer;
+        }
+    }
+    &.git-button {
+        background-color: $blue;
+        text-align: right;
+        i {
+            margin-right: 100px;
+        }
+        &:hover {
+            width: 290px;
+            margin-left: 60px;
+            cursor: pointer;
+        }
+    }
 }

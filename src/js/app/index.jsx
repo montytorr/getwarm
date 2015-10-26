@@ -27,38 +27,45 @@ var Index = React.createClass({
         return (
             <div className="main-container">
                 <div className="download-component">
-                    <div className="download-container">
-                        <h1>WARM</h1>
-                        <h3>- We Are React Masters -</h3>
-                        <button className="download-button">{that.state.quote} WARM</button>
+                    <div className="sub-container title">
+                        <div className="download-container">
+                            <div className="desc-container">
+                                <h1><i>W</i>ARM</h1>
+                                <h3>- A new and simple way to create web-applications</h3>
+                                <h3>using react Js -</h3>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div id="about" className="about-component">
-                    <div className="down-arrow"></div>
-                    <div className="about-container">
-                        <h2>' What is WARM? '</h2>
-                        <br></br>
-                        <div className="about-paragraph">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <br></br>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                            <br></br>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div className="npm-container">
+                        <p>$ npm install warm --save</p>
+                    </div>
+                    <div className="sub-container download">
+                        <div className="download-container">
+                            <div className="button-container">
+                                <div className="front">
+                                    <h3 className="use">Download</h3>
+                                    <button className="download-button"><i>{that.state.quote} WARM</i></button>
+                                </div>
+                                <div className="back down">
+                                    <img src="http://i.imgur.com/duox2qy.png" alt="Down" height="50" width="50"/>
+                                </div>
+                            </div>
+                            <div className="button-container">
+                                <div className="front">
+                                    <button className="git-button"><i>Github</i></button>
+                                    <h3 className="contribute">Contribute</h3>
+                                </div>
+                                <div className="back up">
+                                    <img src="http://i.imgur.com/BCniysX.png" alt="Up" height="50" width="50"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="discover" className="discover-component">
-                    <div className="down-arrow"></div>
-                    <div className="discover-container">
-                        <h2>' Discover WARM '</h2>
-                        <div className="discover-box">
-                            <ul>
-                                {
-                                    discoverTest.map(function (listValue) {
-                                        return <li><div className="discover-elem-back">{listValue}</div><div className="discover-elem-front"></div></li>;
-                                    })
-                                }
-                            </ul>
+                <div id="about" className="about-component">
+                    <div className="about-container">
+                        <div className="about-paragraph">
+
                         </div>
                     </div>
                 </div>

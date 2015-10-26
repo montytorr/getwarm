@@ -3,6 +3,7 @@ var $ = require('jquery');
 var Index = require('./index.jsx');
 var Man = require('./man.jsx');
 var Warm = require('warm');
+var classie = require('classie');
 
 var WarmApp = React.createClass({
     getInitialState: function() {
@@ -21,14 +22,14 @@ var WarmApp = React.createClass({
             return (<Man path={this.state.page.path} />);
         }
     },
-    subNav: function () {
+    goBackConstructor: function () {
         var previous = this.state.path.hist.split("/");
         previous = previous[previous.length - 1];
         if (this.state.path.hist !== 'Warm') {
-            return (<li className='menu-sub-title'><a onClick={this.previousMenu}>{previous.charAt(0).toUpperCase() + previous.substring(1).toLowerCase()}</a></li>);
+            return (<li className='menu-sub-title' key='back'><a onClick={this.goBack}>{previous.charAt(0).toUpperCase() + previous.substring(1).toLowerCase()}</a></li>);
         }
     },
-    previousMenu: function () {
+    goBack: function () {
         var hist = this.state.path.hist.split("/");
         hist.splice(-1,1);
         hist.splice(0,1);
@@ -47,13 +48,21 @@ var WarmApp = React.createClass({
             path : {target : this.state.path.target[target], hist : this.state.path.hist + '/' + target}
         });
     },
-    manPage: function(event, path) {
-        console.log(event);
+    manPage: function(i, path) {
+        var targetedList = document.getElementsByClassName('targeted');
+        for (var j = 0; j < targetedList.length; j++) {
+            classie.remove(targetedList[j], 'targeted');
+        }
+        classie.add(this.refs[i], 'targeted');
         this.setState({
             page: {name : 'Man', path : this.state.path.target.readme}
         });
     },
-    index: function() {
+    indexPage: function() {
+        var targetedList = document.getElementsByClassName('targeted');
+        for (var j = 0; j < targetedList.length; j++) {
+            classie.remove(targetedList[j], 'targeted');
+        }
         this.setState({
             page: {name : 'Index', path : null}
         });
@@ -66,18 +75,18 @@ var WarmApp = React.createClass({
             <div className="view-container">
                 <div className="left-menu">
                     <ul>
-                        <li className='menu-title' key={i++}><a onClick={that.index}>WARM</a></li>
-                        {that.subNav()}
+                        <li className='menu-title' key={i++}><a onClick={that.indexPage}>WARM</a></li>
+                        {that.goBackConstructor()}
                         {
                             Object.keys(that.state.path.target).map (function (layerName) {
                                 var layerVal = that.state.path.target[layerName];
-                                var boundManPage = that.manPage.bind(that, event, layerVal);
+                                var boundManPage = that.manPage.bind(that, i,layerVal);
                                 var boundSubMenu = that.subMenu.bind(that,layerName);
                                 if (layerName != 'readme'){
                                     if (layerVal.constructor == Object) {
                                         return (<li className='menu-elem' key={i++}><a onClick={boundSubMenu}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
                                     } else {
-                                        return (<li className='menu-elem' key={i++}><a href={'#'+layerName.toLowerCase()} onClick={boundManPage}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
+                                        return (<li className='menu-elem man' ref={i} key={i++}><a href={'#'+layerName.toLowerCase()} onClick={boundManPage}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
                                     }
                                 }
                             }, that)

@@ -1,8 +1,8 @@
 var React = require('react')
 var $ = require('jquery');
+var Warm  = require('warm');
 var showdown  = require('showdown'),
 converter = new showdown.Converter();
-var Warm  = require('warm');
 
 var ManPage = React.createClass({
     getInitialState: function() {
@@ -10,8 +10,9 @@ var ManPage = React.createClass({
             readme: []
         });
     },
-    componentDidMount: function() {
+    manSet: function() {
         // $.get(this.props.path, function(result) {
+            // console.log(this.props.path);
         $.get("/js/app/test.md", function(result) {
             result = result.split("!!");
             for (var i = 0; i < result.length; i++) {
@@ -26,22 +27,12 @@ var ManPage = React.createClass({
             }
         }.bind(this));
     },
+    componentDidMount: function() {
+        this.manSet();
+    },
     componentDidUpdate: function(prevProps, prevState) {
         if (prevProps.path != this.props.path) {
-            // $.get(this.props.path, function(result) {
-            $.get("/js/app/test.md", function(result) {
-                result = result.split("!!");
-                for (var i = 0; i < result.length; i++) {
-                    if (result[i].charAt(0) != '$' && result[i].charAt(0) != '£') {
-                        result[i] = converter.makeHtml(result[i]);
-                    }
-                }
-                if (this.isMounted()) {
-                    this.setState({
-                        readme: result
-                    });
-                }
-            }.bind(this));
+            this.manSet();
             return (true);
         } else {
             return (false);
@@ -61,12 +52,12 @@ var ManPage = React.createClass({
                                     Example = Example[layer];
                                 })
                                 var Example = React.createFactory(Example);
-                                return (<Example/>);
+                                return (<div className='sandbox'> <Example className="example"/> </div>);
                             } else if (value.charAt(0) == '£') {
                                 value = value.replace(/\£/g, '').trim().toLowerCase();
                                 return <div id={value}></div>
                             } else {
-                                return <div dangerouslySetInnerHTML={{__html: value}} />;
+                                return <div className="man-content" dangerouslySetInnerHTML={{__html: value}} />;
                             }
                         })
                     }
