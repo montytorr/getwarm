@@ -1,8 +1,8 @@
-// IMPORTS -------------------------------------
+// IMPORTS ---------------------------------------------------------------------
 @import "susy";
 @import "breakpoint";
 
-// BASE STYLES ---------------------------------
+// BASE STYLES -----------------------------------------------------------------
 @import "dimentions";
 @import "colors";
 @import "fonts";
@@ -10,12 +10,12 @@
 @import "base";
 @import "prism";
 
-// COMPONENTS STYLES ---------------------------------
+// COMPONENTS STYLES -----------------------------------------------------------
 @import "components/menu";
 @import "components/download";
 @import "components/about";
 
 @import "components/man";
 
-// WARM EXAMPLES ---------------------------------
-@import "warm-examples/login";
+// WARM STYLES -----------------------------------------------------------------
+@import "../../node_modules/warm/src/scss/_main.scss";
