@@ -11,9 +11,9 @@ var ManPage = React.createClass({
         });
     },
     manSet: function() {
-        // $.get(this.props.path, function(result) {
+        $.get(this.props.path, function(result) {
             // console.log(this.props.path);
-        $.get("/js/app/test.md", function(result) {
+        // $.get("/js/app/test.md", function(result) {
             result = result.split("!!");
             for (var i = 0; i < result.length; i++) {
                 if (result[i].charAt(0) != '$' && result[i].charAt(0) != '£') {

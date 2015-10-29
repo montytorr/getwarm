@@ -3,3 +3,7 @@
 *.scssc
 
 docker/dist/info.json
+
+src/js/bundle.js
+
+src/css/style.css
