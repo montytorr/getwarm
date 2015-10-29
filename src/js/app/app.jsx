@@ -45,8 +45,10 @@ var WarmApp = React.createClass({
     },
     subMenu: function (target) {
         this.setState({
-            path : {target : this.state.path.target[target], hist : this.state.path.hist + '/' + target}
+            path : {target : this.state.path.target[target], hist : this.state.path.hist + '/' + target},
+            page: {name : 'Man', path : this.state.path.target[target].readme}
         });
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
     manPage: function(i, path) {
         var targetedList = document.getElementsByClassName('targeted');
@@ -64,7 +66,8 @@ var WarmApp = React.createClass({
             classie.remove(targetedList[j], 'targeted');
         }
         this.setState({
-            page: {name : 'Index', path : null}
+            page: {name : 'Index', path : null},
+            path: {target : Warm, hist : 'Warm'}
         });
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
