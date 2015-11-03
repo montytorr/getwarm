@@ -20,6 +20,11 @@ gulp.task('move_bundle', function () {
     .pipe(gulp.dest('dist/js'))
 });
 
+gulp.task('move_css', function () {
+    return gulp.src('src/css/style.css')
+    .pipe(gulp.dest('dist/css'))
+});
+
 gulp.task('move_libs', function () {
     return gulp.src('src/js/libs/*.js')
     .pipe(gulp.dest('dist/js/libs'));
@@ -47,14 +52,10 @@ gulp.task('move_mp3', function () {
 });
 
 gulp.task('move_index', function () {
-    var cssFilter = $.filter('src/css/*.css');
     var assets;
 
     return gulp.src('src/index.html')
     .pipe(assets = $.useref.assets())
-    .pipe(cssFilter)
-    .pipe($.csso())
-    .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe(gulp.dest('dist'));
@@ -77,7 +78,7 @@ gulp.task('compass', function() {
         require: ['susy']
     }))
     .pipe(autoprefixer('last 2 versions'))
-    .pipe(gulp.dest('dist/css/'));
+    .pipe(gulp.dest('src/css/'));
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,6 +88,7 @@ gulp.task('build', [
     'js',
     'compass',
     'move_bundle',
+    'move_css',
     'move_libs',
     'move_config',
     'move_images',

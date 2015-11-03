@@ -15,14 +15,14 @@ var path = {
     html_files: ['./src/**/*.html'],
     app_js: ['./src/js/main.js'],
     jsx_files: ['./src/js/**/*.js*', '!./src/js/bundle.js'],
-    scss_files: ['./src/scss/**/*.scss']
+    scss_files: ['./src/scss/**/*.scss', './node-modules/warm/src/scss/**/*.scss']
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 // HTML Tasks
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('html', function() {
-    gulp.src(html_files)
+    gulp.src(path.html_files)
     .pipe(reload({stream:true}));
 });
 

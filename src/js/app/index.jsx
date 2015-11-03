@@ -5,76 +5,6 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var ButtonDot = React.createClass({
-    handleClick: function() {
-        if (this.props.onClick == undefined) {
-            alert("Dot button clicked!");
-        } else {
-            this.props.onClick();
-        }
-    },
-    render: function() {
-        var that = this;
-        return (
-            <div onClick={this.handleClick} className="warm-component button-dot">
-                <div className="main-dot">
-                    <div className="small-dot"></div>
-                </div>
-            </div>
-        );
-    }
-});
-
-var ListDot = React.createClass({
-    getInitialState: function() {
-        if (this.props.list == undefined) {
-            return ({
-                list: [
-                    {
-                        title : "First list element",
-                        subTitle: "Some details about it"
-                    },
-                    {
-                        title : "Another element",
-                        subTitle: "More details?"
-                    },
-                    {
-                        title : "Last element",
-                        subTitle: "Ok that was the last"
-                    }
-                ]
-            });
-        } else {
-            return ({
-                list: this.props.list
-            });
-        }
-    },
-    render: function() {
-        var that = this;
-        var i = 0;
-        return (
-            <div className="warm-component list-dot">
-                {
-                    that.state.list.map(function (elem) {
-                        return (
-                            <li key={i++}>
-                                <div className="details-container">
-                                    <h1>{elem.title}</h1>
-                                    <h2>{elem.subTitle}</h2>
-                                </div>
-                                <div className="dot-container">
-                                    <ButtonDot></ButtonDot>
-                                </div>
-                            </li>
-                        );
-                    })
-                }
-            </div>
-        );
-    }
-});
-
 var Index = React.createClass({
     getInitialState: function() {
         return ({
@@ -134,7 +64,6 @@ var Index = React.createClass({
                 </div>
                 <div id="about" className="about-component">
                     <div className="about-container">
-                        <ListDot></ListDot>
                     </div>
                 </div>
             </div>
