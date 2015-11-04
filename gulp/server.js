@@ -29,5 +29,5 @@ gulp.task('serve', ['js', 'watch'], function () {
 //XX BUILD / SERVE ON DIST
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('serve:dist', ['build'], function () {
-    browserSyncInit('dist');
+    browserSyncInit('docker/dist');
 });
