@@ -15,8 +15,23 @@ gulp-build:
 	# Copy the generated dist/ directory here to have it in the docker build context
 	#rm -rf docker/dist && mv dist docker
 
+gulp-build-cal:
+	# Build the front static website
+	npm install /Users/callum/Desktop/maestro-dev/warm --save && npm install && gulp clean && gulp build
+
+	# Generate info.json using current git sha1
+	#../etc/bin/generate-info.sh dist/info.json
+
+	# Copy the generated dist/ directory here to have it in the docker build context
+	#rm -rf docker/dist && mv dist docker
+
 
 build: gulp-build
+	cd docker && docker build --rm -t $(ORG)/$(NAME):${VERSION} .
+
+	docker tag -f $(ORG)/$(NAME):${VERSION} $(ORG)/$(NAME):$(BRANCH)-latest
+
+cal-build: gulp-build-cal
 	cd docker && docker build --rm -t $(ORG)/$(NAME):${VERSION} .
 
 	docker tag -f $(ORG)/$(NAME):${VERSION} $(ORG)/$(NAME):$(BRANCH)-latest
