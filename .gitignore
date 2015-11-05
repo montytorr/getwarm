@@ -2,7 +2,7 @@
 
 *.scssc
 
-docker/dist/info.json
+docker/dist/*
 
 src/js/bundle.js
 
