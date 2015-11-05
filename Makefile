@@ -5,7 +5,7 @@ BRANCH = $(shell git branch -a --contains $(SHA1) | egrep '(remotes/|\*)' | egre
 VERSION = $(BRANCH)-$(SHA1)
 REGISTRY = registry.ticket-tool.com:5000
 
-gulp-build:
+gulp-build-local:
 	# Build the front static website
 	npm install /Users/BoB/Prog/warm --save && npm install && gulp clean && gulp build
 
@@ -15,9 +15,9 @@ gulp-build:
 	# Copy the generated dist/ directory here to have it in the docker build context
 	#rm -rf docker/dist && mv dist docker
 
-gulp-build-cal:
+gulp-build:
 	# Build the front static website
-	npm install /Users/callum/Desktop/maestro-dev/warm --save && npm install && gulp clean && gulp build
+	npm install https://github.com/maestro-tech/warm --save && npm install && gulp clean && gulp build
 
 	# Generate info.json using current git sha1
 	#../etc/bin/generate-info.sh dist/info.json
@@ -26,12 +26,12 @@ gulp-build-cal:
 	#rm -rf docker/dist && mv dist docker
 
 
-build: gulp-build
+build-local: gulp-build-local
 	cd docker && docker build --rm -t $(ORG)/$(NAME):${VERSION} .
 
 	docker tag -f $(ORG)/$(NAME):${VERSION} $(ORG)/$(NAME):$(BRANCH)-latest
 
-cal-build: gulp-build-cal
+build: gulp-build
 	cd docker && docker build --rm -t $(ORG)/$(NAME):${VERSION} .
 
 	docker tag -f $(ORG)/$(NAME):${VERSION} $(ORG)/$(NAME):$(BRANCH)-latest

@@ -27,7 +27,7 @@
     "showdown": "^1.2.3",
     "validator": "^3.41.2",
     "vinyl-source-stream": "^1.1.0",
-    "warm": "file:../warm",
+    "warm": "git://github.com/maestro-tech/warm.git",
     "websocket": "^1.0.19"
   },
   "devDependencies": {
