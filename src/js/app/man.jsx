@@ -42,8 +42,7 @@ var ManPage = React.createClass({
         console.log(this.state);
         return (
             <div className="main-container">
-                <div className="man-container">
-                    {
+                <div className="man-container">{
                         this.state.readme.map(function (value) {
                             var Example = Warm;
                             if (value.charAt(0) == '$') {
@@ -61,8 +60,7 @@ var ManPage = React.createClass({
                                 return <div className="man-content" dangerouslySetInnerHTML={{__html: value}} />;
                             }
                         })
-                    }
-                </div>
+                    }</div>
             </div>
         );
     }
