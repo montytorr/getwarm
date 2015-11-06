@@ -29,10 +29,12 @@ p {
     font-size: 15pt;
 }
 
-#app-view .view-container {
-    position: absolute;
+#app-view,#app-view .view-container {
     width: 100%;
     height: 100%;
+}
+.view-container{
+    display: inline-flex;
 }
 
 .down-arrow {
@@ -45,9 +47,8 @@ p {
 
 .main-container {
     text-align: center;
-    position: absolute;
-    left: 150px;
-    width: calc(100% - 150px);
+    width: calc(100% - 250px);
     height: 100%;
     background-color: #fff;
+    overflow-y: scroll;
 }

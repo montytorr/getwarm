@@ -1,30 +1,22 @@
 .man-container {
     display: inline-block;
     text-align: left;
-    padding-left: 30px;
-    padding-right: 30px;
-    margin-top: 10px;
     color: $black;
     width: 100%;
-    max-width: 1300px;
-    min-width: 500px;
-    border-left: 1px solid $grey;
-    border-right: 1px solid $grey;
-    text-align: justify;
-    text-justify: inter-word;
     background-color: #FBFBFB;
 }
 
 .man-container .sandbox {
-    margin: 0 0 0 30px;
-    padding: 30px 30px 30px 30px;
     background-color: $black-hover;
-    display: inline-flex;
-    width: calc(100% - 30px);
+    width: calc(100% - 50px);
+    margin:25px;
     box-sizing: border-box;
     color: #646464;
-    -webkit-transition: color 0.5s cubic-bezier(.7, 0, .3, 1);
-    transition: color 0.5s cubic-bezier(.7, 0, .3, 1);
+    -webkit-transition: color 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: color 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    display: inline-flex;
+    padding: 25px 15px;
+    border-radius: 5px;
     &:hover {
         color: #9F9F9F;
     }
@@ -45,66 +37,65 @@
 
 .man-container .sandbox > * {
     text-align: center;
-    margin: 0 0 0 30px;
 }
 
 .man-container .man-content {
-    margin: 10px 0 10px 30px;
     h1 {
         font-family: $light-font;
         font-weight: bold;
         font-size: 4.5em;
-        margin: 30px 0 30px -30px;
-        color: $red;
+        background-color: $red;
+        height:100px;
+        line-height: 100px;
+        color:rgba(0, 0, 0, 0.5);
+        text-indent: 25px;
     }
     h2 {
         font-family: $light-font;
         font-weight: bold;
         font-size: 2.5em;
-        margin: 80px 0 -40px -30px;
-        color: $blue;
+        background-color: $blue;
+        color:rgba(0,0,0,0.4);
+        padding:15px;
+        margin-top: 50px
     }
     h3 {
-        font-family: $light-font;
-        font-weight: bold;
+        font-family: "Oxygen", sans-serif;
         font-size: 2.2em;
-        margin: 60px 0 20px 0;
-        color: $black-hover;
+        font-weight: 200;
+        color: #E15C56;
+        text-indent: 25px;
+        margin-bottom: 25px
     }
     h4 {
         font-family: $light-font;
         font-weight: bold;
         font-size: 1.7em;
-        margin: 20px 0 20px 0;
     }
     ul {
         font-family: $light-font;
         font-weight: 400;
         font-size: 1.1em;
-        list-style-type: initial;
-        margin: 20px 0 20px 40px;
+        padding-left: 30px;
     }
     li {
-        margin: 10px 0 10px 0px;
     }
     pre code {
-        margin: 10px 0 10px 0px;
-        padding: 20px 20px 20px 20px;  display: block;
-        background: #2d2d2d;
-        color: #cccccc;
+        display: block;
+        background: RGBA(45, 50, 59, 1);
+        color: RGBA(180, 187, 198, 1);
         font-family: Menlo, Monaco, Consolas, monospace;
         line-height: 1.5;
         border: 1px solid #ccc;
-        padding: 10px;
+        padding: 15px;
     }
     blockquote {
-        margin: 20px 0 20px 0px;
-        padding: 0px 10px 0px 10px;
         color: #939393;
         font-family: $light-font;
         font-weight: 400;
         font-size: 2em;
         border-left: 5px solid $grey;
+        padding: 25px;
     }
     img {
         position: relative;

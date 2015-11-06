@@ -1,8 +1,7 @@
 .about-component {
     text-align: center;
     position: relative;
-    height: 50vh;
-    line-height: 50vh;
+    height: calc(100% - 625px);
     background-color: $grey;
     box-sizing: border-box;
     border-top: 2px solid $dark-grey;
