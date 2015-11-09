@@ -1,5 +1,6 @@
 var React = require('react')
 var classie = require('classie');
+var Warm = require('Warm');
 
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -9,7 +10,8 @@ var Index = React.createClass({
     getInitialState: function() {
         return ({
             readme: '',
-            quote: 'Be'
+            quote: 'Be',
+            modal: false
         });
     },
     changeQuote: function () {
@@ -21,9 +23,23 @@ var Index = React.createClass({
             });
         },5000);
     },
+    modal: function (e) {
+        console.log(e);
+        if(e.target.id == 'modal-father' || e.target.parentElement.id == 'modal-father') {
+            if (this.state.modal == true) {
+                this.setState({
+                    modal: false
+                });
+            } else {
+                this.setState({
+                    modal: true
+                });
+            }
+        }
+    },
     render: function() {
         var that = this;
-        this.changeQuote();
+        //this.changeQuote();
         return (
             <div className="main-container">
                 <div className="download-component">
@@ -63,7 +79,8 @@ var Index = React.createClass({
                     </div>
                 </div>
                 <div id="about" className="about-component">
-                    <div className="about-container">
+                    <div id="modal-father" onClick={this.modal} className="about-container">
+
                     </div>
                 </div>
             </div>

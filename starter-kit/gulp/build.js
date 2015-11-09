@@ -17,22 +17,22 @@ var $ = require('gulp-load-plugins')({
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('move_bundle', function () {
     return gulp.src('src/js/bundle.js')
-    .pipe(gulp.dest('docker/dist/js'))
+    .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('move_css', function () {
     return gulp.src('src/css/style.css')
-    .pipe(gulp.dest('docker/dist/css'))
+    .pipe(gulp.dest('dist/css'))
 });
 
 gulp.task('move_libs', function () {
     return gulp.src('src/js/libs/*.js')
-    .pipe(gulp.dest('docker/dist/js/libs'));
+    .pipe(gulp.dest('dist/js/libs'));
 });
 
 gulp.task('move_config', function () {
     return gulp.src('src/config.js')
-    .pipe(gulp.dest('docker/dist'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('move_images', function () {
@@ -42,13 +42,13 @@ gulp.task('move_images', function () {
         progressive: true,
         interlaced: true
     }))
-    .pipe(gulp.dest('docker/dist/img'))
+    .pipe(gulp.dest('dist/img'))
     .pipe($.size());
 });
 
 gulp.task('move_mp3', function () {
     return gulp.src('src/*.mp3')
-    .pipe(gulp.dest('docker/dist'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('move_index', function () {
@@ -58,11 +58,11 @@ gulp.task('move_index', function () {
     .pipe(assets = $.useref.assets())
     .pipe(assets.restore())
     .pipe($.useref())
-    .pipe(gulp.dest('docker/dist'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', function (done) {
-    $.del(['.tmp', 'docker/dist', 'src/css/style.css', 'src/js/bundle.js'], done);
+    $.del(['.tmp', 'dist', 'src/css/style.css', 'src/js/bundle.js'], done);
 });
 
 ////////////////////////////////////////////////////////////////////////////////

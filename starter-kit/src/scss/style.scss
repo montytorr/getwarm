@@ -3,21 +3,15 @@
 @import "breakpoint";
 
 // BASE STYLES -----------------------------------------------------------------
-@import "dimentions";
-@import "colors";
-@import "fonts";
 @import "reset";
 @import "base";
 
 // COMPONENTS STYLES -----------------------------------------------------------
-@import "components/menu";
-@import "components/download";
-@import "components/about";
+@import "components/homepage";
 
-@import "components/man";
 
 // WARM THEME ------------------------------------------------------------------
-@import "themes/astrolight";
+@import "themes/default";
 
 // WARM STYLES -----------------------------------------------------------------
 @import "../../node_modules/warm/src/scss/_main.scss";

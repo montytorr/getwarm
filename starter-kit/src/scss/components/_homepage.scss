@@ -1,0 +1,17 @@
+.homepage-container {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-color: #20c1f4;
+    text-align: center;
+    transition: 1s;
+    h1 {
+        line-height: 90px;
+        color:#fff;
+    }
+    &:hover {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}
