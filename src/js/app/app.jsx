@@ -15,6 +15,7 @@ var WarmApp = React.createClass({
         });
     },
     pageChanger: function () {
+        console.log("PAGE CHANGE");
         if (this.state.page.name == 'Index') {
             return (<Index />);
         }
@@ -30,6 +31,7 @@ var WarmApp = React.createClass({
         }
     },
     goBack: function () {
+        console.log("BACK");
         var hist = this.state.path.hist.split("/");
         hist.splice(-1,1);
         hist.splice(0,1);
@@ -44,6 +46,7 @@ var WarmApp = React.createClass({
         });
     },
     subMenu: function (target) {
+        console.log("SUB");
         this.setState({
             path : {target : this.state.path.target[target], hist : this.state.path.hist + '/' + target},
             page: {name : 'Man', path : this.state.path.target[target].readme}
@@ -51,6 +54,7 @@ var WarmApp = React.createClass({
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
     manPage: function(i, path) {
+        console.log("MAN");
         var targetedList = document.getElementsByClassName('targeted');
         for (var j = 0; j < targetedList.length; j++) {
             classie.remove(targetedList[j], 'targeted');
@@ -61,6 +65,7 @@ var WarmApp = React.createClass({
         });
     },
     indexPage: function() {
+        console.log("INDEX");
         var targetedList = document.getElementsByClassName('targeted');
         for (var j = 0; j < targetedList.length; j++) {
             classie.remove(targetedList[j], 'targeted');

@@ -23,23 +23,9 @@ var Index = React.createClass({
             });
         },5000);
     },
-    modal: function (e) {
-        console.log(e);
-        if(e.target.id == 'modal-father' || e.target.parentElement.id == 'modal-father') {
-            if (this.state.modal == true) {
-                this.setState({
-                    modal: false
-                });
-            } else {
-                this.setState({
-                    modal: true
-                });
-            }
-        }
-    },
     render: function() {
         var that = this;
-        //this.changeQuote();
+        this.changeQuote();
         return (
             <div className="main-container">
                 <div className="download-component">
@@ -79,9 +65,6 @@ var Index = React.createClass({
                     </div>
                 </div>
                 <div id="about" className="about-component">
-                    <div id="modal-father" onClick={this.modal} className="about-container">
-
-                    </div>
                 </div>
             </div>
         );

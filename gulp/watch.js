@@ -29,7 +29,7 @@ gulp.task('html', function() {
 ////////////////////////////////////////////////////////////////////////////////
 // JS Task: Browserify the code, compile React JSX files and bundle the JS.
 ////////////////////////////////////////////////////////////////////////////////
-gulp.task('js', ['clean'], function() {
+gulp.task('js', ['clean','compass-rebuild'], function() {
     browserify(path.app_js)
     .transform({global:true},reactify)
     .bundle()

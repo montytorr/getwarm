@@ -9,7 +9,7 @@
 .man-container .sandbox {
     background-color: $black-hover;
     width: calc(100% - 50px);
-    margin:25px;
+    margin:25px 0 0 25px;
     box-sizing: border-box;
     color: #646464;
     -webkit-transition: color 0.5s cubic-bezier(0.7, 0, 0.3, 1);
@@ -39,67 +39,79 @@
     text-align: center;
 }
 
-.man-container .man-content {
-    h1 {
-        font-family: $light-font;
-        font-weight: bold;
-        font-size: 4.5em;
-        background-color: $red;
-        height:100px;
-        line-height: 100px;
-        color:rgba(0, 0, 0, 0.5);
-        text-indent: 25px;
-    }
-    h2 {
-        font-family: $light-font;
-        font-weight: bold;
-        font-size: 2.5em;
-        background-color: $blue;
-        color:rgba(0,0,0,0.4);
-        padding:15px;
-        margin-top: 50px
-    }
-    h3 {
-        font-family: "Oxygen", sans-serif;
-        font-size: 2.2em;
-        font-weight: 200;
-        color: #E15C56;
-        text-indent: 25px;
-        margin-bottom: 25px
-    }
-    h4 {
-        font-family: $light-font;
-        font-weight: bold;
-        font-size: 1.7em;
-    }
-    ul {
-        font-family: $light-font;
-        font-weight: 400;
-        font-size: 1.1em;
-        padding-left: 30px;
-    }
-    li {
-
-    }
-    pre code {
-        display: block;
-        background: RGBA(45, 50, 59, 1);
-        color: RGBA(180, 187, 198, 1);
-        font-family: Menlo, Monaco, Consolas, monospace;
-        line-height: 1.5;
-        border: 1px solid #ccc;
-        padding: 15px;
-    }
-    blockquote {
-        color: #939393;
-        font-family: $light-font;
-        font-weight: 400;
-        font-size: 2em;
-        border-left: 5px solid $grey;
-        padding: 25px;
-    }
-    img {
-        position: relative;
-        max-width: 100%;
+.man-container {
+    margin-bottom: 25px;
+    .man-content {
+        h1 {
+            font-family: $light-font;
+            font-weight: bold;
+            font-size: 4.5em;
+            background-color: $red;
+            height:100px;
+            line-height: 100px;
+            color:rgba(0, 0, 0, 0.5);
+            text-indent: 25px;
+        }
+        h2 {
+            font-family: $light-font;
+            font-weight: bold;
+            font-size: 2.5em;
+            background-color: $blue;
+            color:rgba(0,0,0,0.4);
+            padding:15px;
+            margin-top: 50px
+        }
+        h3 {
+            font-family: "Oxygen", sans-serif;
+            font-size: 2.2em;
+            font-weight: 200;
+            color: #E15C56;
+            text-indent: 25px;
+            margin-top: 45px;
+        }
+        h4 {
+            font-family: $light-font;
+            font-weight: bold;
+            font-size: 1.7em;
+            margin: 25px 0 0 50px;
+        }
+        ul {
+            margin: 25px 0 0 50px;
+        }
+        li {
+            margin-top: 25px;
+            font-family: "Oxygen", sans-serif;
+            font-size: 1.3rem;
+            line-height: 1.7rem;
+        }
+        p {
+            font-family: "Oxygen", sans-serif;
+            font-size: 1.3rem;
+            line-height: 1.7rem;
+        }
+        pre code {
+            display: block;
+            background: RGBA(45, 50, 59, 1);
+            color: RGBA(180, 187, 198, 1);
+            font-family: Menlo, Monaco, Consolas, monospace;
+            font-size: 1rem;
+            line-height: 1.5;
+            border: 1px solid #ccc;
+            margin: 25px 0 0 50px;
+            padding: 15px;
+        }
+        blockquote {
+            color: #939393;
+            font-family: $light-font;
+            font-weight: 400;
+            font-size: 2em;
+            border-left: 5px solid $grey;
+            margin: 25px 0 0 50px;
+            padding: 20px;
+        }
+        img {
+            position: relative;
+            max-width: 100%;
+        }
     }
 }
