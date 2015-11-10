@@ -15,7 +15,7 @@ function browserSyncInit(baseDir, files) {
 ////////////////////////////////////////////////////////////////////////////////
 //XX SERVE TASK
 ////////////////////////////////////////////////////////////////////////////////
-gulp.task('serve', ['js', 'compass-rebuild', 'watch'], function () {
+gulp.task('serve', ['SK-serve', 'js', 'compass-watch', 'watch'], function () {
     browserSyncInit([
         'src',
         '.tmp'

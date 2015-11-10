@@ -14,6 +14,12 @@ var Index = React.createClass({
             modal: false
         });
     },
+    downloadSK: function () {
+        window.open('./starter-kit.zip', 'Download');
+    },
+    openGithub: function () {
+        window.open('https://github.com/maestro-tech/warm');
+    },
     changeQuote: function () {
         that = this;
         var quotes = ['Be', 'Get', 'Have', 'Become', 'Join', 'Feel', 'Steal', '42', 'I\'m', 'Oh my', 'Love', 'Like'];
@@ -27,7 +33,7 @@ var Index = React.createClass({
         var that = this;
         this.changeQuote();
         return (
-            <div className="main-container">
+            <div id="main-container" className="main-container">
                 <div className="download-component">
                     <div className="sub-container title">
                         <div className="download-container">
@@ -46,7 +52,7 @@ var Index = React.createClass({
                             <div className="button-container">
                                 <div className="front">
                                     <h3 className="use">Download</h3>
-                                    <button className="download-button"><i>{that.state.quote} WARM</i></button>
+                                    <button onClick={this.downloadSK} className="download-button"><i>{that.state.quote} WARM</i></button>
                                 </div>
                                 <div className="back down">
                                     <img src="http://i.imgur.com/duox2qy.png" alt="Down" height="50" width="50"/>
@@ -54,7 +60,7 @@ var Index = React.createClass({
                             </div>
                             <div className="button-container">
                                 <div className="front">
-                                    <button className="git-button"><i>Github</i></button>
+                                    <button onClick={this.openGithub} className="git-button"><i>Github</i></button>
                                     <h3 className="contribute">Contribute</h3>
                                 </div>
                                 <div className="back up">

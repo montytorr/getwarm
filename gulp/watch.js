@@ -29,7 +29,7 @@ gulp.task('html', function() {
 ////////////////////////////////////////////////////////////////////////////////
 // JS Task: Browserify the code, compile React JSX files and bundle the JS.
 ////////////////////////////////////////////////////////////////////////////////
-gulp.task('js', ['clean','compass-rebuild'], function() {
+gulp.task('js', ['clean','compass-watch'], function() {
     browserify(path.app_js)
     .transform({global:true},reactify)
     .bundle()
@@ -41,7 +41,7 @@ gulp.task('js', ['clean','compass-rebuild'], function() {
 ////////////////////////////////////////////////////////////////////////////////
 // Compass Tasks
 ////////////////////////////////////////////////////////////////////////////////
-gulp.task('compass-rebuild', function() {
+gulp.task('compass-watch', function() {
     gulp.src('src/scss/style.scss')
     .pipe(plumber())
     .pipe(compass({
@@ -61,5 +61,5 @@ gulp.task('compass-rebuild', function() {
 gulp.task('watch', function() {
     gulp.watch(path.html_files, ['html']);
     gulp.watch(path.jsx_files, ['js']);
-    gulp.watch(path.scss_files, ['compass-rebuild']);
+    gulp.watch(path.scss_files, ['compass-watch']);
 });

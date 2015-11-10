@@ -12,7 +12,6 @@ var ManPage = React.createClass({
     },
     manSet: function() {
         $.get(this.props.path, function(result) {
-            console.log(this.props.path);
         // $.get("/js/app/test.md", function(result) {
             result = result.split("!!");
             for (var i = 0; i < result.length; i++) {
@@ -39,9 +38,8 @@ var ManPage = React.createClass({
         }
     },
     render: function() {
-        console.log(this.state);
         return (
-            <div className="main-container">
+            <div id="main-container" className="main-container">
                 <div className="man-container">{
                     this.state.readme.map(function (value, index) {
                         var Example = Warm;

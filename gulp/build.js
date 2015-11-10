@@ -4,6 +4,7 @@ var debug = require('gulp-debug');
 var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
+var zip = require('gulp-zip');
 
 var moduleName = 'getwarm';
 
@@ -62,7 +63,7 @@ gulp.task('move_index', function () {
 });
 
 gulp.task('clean', function (done) {
-    $.del(['.tmp', 'docker/dist', 'src/css/style.css', 'src/js/bundle.js'], done);
+    $.del(['.tmp', 'docker/dist', 'src/css/style.css', 'src/js/bundle.js', 'src/starter-kit.zip'], done);
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -81,10 +82,27 @@ gulp.task('compass', function() {
     .pipe(gulp.dest('src/css/'));
 });
 
+
+////////////////////////////////////////////////////////////////////////////////
+// ZIP Tasks
+////////////////////////////////////////////////////////////////////////////////
+gulp.task('SK-serve', function() {
+    return gulp.src('starter-kit/*')
+        .pipe(zip('starter-kit.zip'))
+        .pipe(gulp.dest('src'));
+});
+
+gulp.task('SK-build', function() {
+    return gulp.src('starter-kit/*')
+        .pipe(zip('starter-kit.zip'))
+        .pipe(gulp.dest('docker/dist'));
+});
+
 ////////////////////////////////////////////////////////////////////////////////
 //XX BUILD TASK
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('build', [
+    'SK-build',
     'js',
     'compass',
     'move_bundle',

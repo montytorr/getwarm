@@ -31,7 +31,9 @@ p {
 
 #app-view,#app-view .view-container {
     width: 100%;
+    min-width: 800px;
     height: 100%;
+    min-height: 650px;
 }
 .view-container{
     display: inline-flex;

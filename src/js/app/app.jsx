@@ -15,7 +15,6 @@ var WarmApp = React.createClass({
         });
     },
     pageChanger: function () {
-        console.log("PAGE CHANGE");
         if (this.state.page.name == 'Index') {
             return (<Index />);
         }
@@ -31,7 +30,6 @@ var WarmApp = React.createClass({
         }
     },
     goBack: function () {
-        console.log("BACK");
         var hist = this.state.path.hist.split("/");
         hist.splice(-1,1);
         hist.splice(0,1);
@@ -46,15 +44,14 @@ var WarmApp = React.createClass({
         });
     },
     subMenu: function (target) {
-        console.log("SUB");
         this.setState({
             path : {target : this.state.path.target[target], hist : this.state.path.hist + '/' + target},
             page: {name : 'Man', path : this.state.path.target[target].readme}
+        }, function () {
+            document.getElementById("main-container").scrollTop = 0;
         });
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
-    manPage: function(i, path) {
-        console.log("MAN");
+    manPage: function(i, path, id) {
         var targetedList = document.getElementsByClassName('targeted');
         for (var j = 0; j < targetedList.length; j++) {
             classie.remove(targetedList[j], 'targeted');
@@ -63,9 +60,9 @@ var WarmApp = React.createClass({
         this.setState({
             page: {name : 'Man', path : this.state.path.target.readme}
         });
+        document.getElementById(id).scrollIntoView();
     },
     indexPage: function() {
-        console.log("INDEX");
         var targetedList = document.getElementsByClassName('targeted');
         for (var j = 0; j < targetedList.length; j++) {
             classie.remove(targetedList[j], 'targeted');
@@ -88,13 +85,13 @@ var WarmApp = React.createClass({
                         {
                             Object.keys(that.state.path.target).map (function (layerName) {
                                 var layerVal = that.state.path.target[layerName];
-                                var boundManPage = that.manPage.bind(that, i,layerVal);
+                                var boundManPage = that.manPage.bind(that, i, layerVal, layerName.toLowerCase());
                                 var boundSubMenu = that.subMenu.bind(that,layerName);
                                 if (layerName != 'readme'){
                                     if (layerVal.constructor == Object) {
                                         return (<li className='menu-elem' key={i++}><a onClick={boundSubMenu}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
                                     } else {
-                                        return (<li className='menu-elem man' ref={i} key={i++}><a href={'#'+layerName.toLowerCase()} onClick={boundManPage}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
+                                        return (<li className='menu-elem man' ref={i} key={i++}><a onClick={boundManPage}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
                                     }
                                 }
                             }, that)
