@@ -5,6 +5,9 @@ var compass = require('gulp-compass');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var zip = require('gulp-zip');
+var browserify = require('browserify');       // Bundles JS
+var reactify = require('reactify');           // Transforms React JSX to JS
+var source = require('vinyl-source-stream');
 
 var moduleName = 'getwarm';
 
@@ -19,11 +22,6 @@ var $ = require('gulp-load-plugins')({
 gulp.task('move_bundle', function () {
     return gulp.src('src/js/bundle.js')
     .pipe(gulp.dest('docker/dist/js'))
-});
-
-gulp.task('move_css', function () {
-    return gulp.src('src/css/style.css')
-    .pipe(gulp.dest('docker/dist/css'))
 });
 
 gulp.task('move_libs', function () {
@@ -79,9 +77,19 @@ gulp.task('compass', function() {
         require: ['susy']
     }))
     .pipe(autoprefixer('last 2 versions'))
-    .pipe(gulp.dest('src/css/'));
+    .pipe(gulp.dest('docker/dist/css/'));
 });
 
+////////////////////////////////////////////////////////////////////////////////
+// JS Task: Browserify the code, compile React JSX files and bundle the JS.
+////////////////////////////////////////////////////////////////////////////////
+gulp.task('js', function() {
+    browserify('./src/js/main.js')
+    .transform({global:true},reactify)
+    .bundle()
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest('./docker/dist/js'))
+});
 
 ////////////////////////////////////////////////////////////////////////////////
 // ZIP Tasks
@@ -102,11 +110,10 @@ gulp.task('SK-build', function() {
 //XX BUILD TASK
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('build', [
-    'SK-build',
     'js',
     'compass',
+    'SK-build',
     'move_bundle',
-    'move_css',
     'move_libs',
     'move_config',
     'move_images',

@@ -7,3 +7,5 @@ docker/dist/*
 src/js/bundle.js
 
 src/css/style.css
+
+src/starter-kit.zip

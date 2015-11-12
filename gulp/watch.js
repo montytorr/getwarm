@@ -29,7 +29,7 @@ gulp.task('html', function() {
 ////////////////////////////////////////////////////////////////////////////////
 // JS Task: Browserify the code, compile React JSX files and bundle the JS.
 ////////////////////////////////////////////////////////////////////////////////
-gulp.task('js', ['clean','compass-watch'], function() {
+gulp.task('js-watch', ['clean','compass-watch'], function() {
     browserify(path.app_js)
     .transform({global:true},reactify)
     .bundle()
@@ -51,7 +51,7 @@ gulp.task('compass-watch', function() {
         require: ['susy']
     }))
     .pipe(autoprefixer('last 2 versions'))
-    .pipe(gulp.dest('../src/css/'))
+    .pipe(gulp.dest('src/css/'))
     .pipe(reload({stream:true}));
 });
 
@@ -60,6 +60,6 @@ gulp.task('compass-watch', function() {
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('watch', function() {
     gulp.watch(path.html_files, ['html']);
-    gulp.watch(path.jsx_files, ['js']);
+    gulp.watch(path.jsx_files, ['js-watch']);
     gulp.watch(path.scss_files, ['compass-watch']);
 });
