@@ -87,7 +87,7 @@ var WarmApp = React.createClass({
                                 var layerVal = that.state.path.target[layerName];
                                 var boundManPage = that.manPage.bind(that, i, layerVal, layerName.toLowerCase());
                                 var boundSubMenu = that.subMenu.bind(that,layerName);
-                                if (layerName != 'readme'){
+                                if (layerName != 'readme' && layerName != 'loaders'){
                                     if (layerVal.constructor == Object) {
                                         return (<li className='menu-elem' key={i++}><a onClick={boundSubMenu}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
                                     } else {

@@ -7,6 +7,7 @@
 }
 
 .man-container .sandbox {
+    position: relative;
     background-color: $black-hover;
     width: calc(100% - 50px);
     margin:25px 0 0 25px;
