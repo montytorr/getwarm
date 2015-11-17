@@ -71,6 +71,16 @@ var Index = React.createClass({
                     </div>
                 </div>
                 <div id="about" className="about-component">
+                    <div className="about-container">
+                        <p>
+                            WARM is a package containing many ReactJs modules comparable to bootstrap : you can use any of this module separately to create your own WebApp.<br></br>
+                            By clicking the download button you obtain the 'starter-kit' witch gives you acess to a simple environment with a gulp and node modules.<br></br><br></br>
+                            You can aleready launch the demo  by typing - make warm - in your term at rhe root of the starter kit.<br></br>
+                            Or you can directly modify the code to explore all the possibilities by yourself helped of course by the documentation on your left ! Enjoy :)
+                        </p>
+                    </div>
+                    <div className="about-footer">
+                    </div>
                 </div>
             </div>
         );

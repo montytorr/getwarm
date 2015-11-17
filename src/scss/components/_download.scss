@@ -1,12 +1,11 @@
 .download-component {
+    position: relative;
     text-align: center;
     height: 625px;
 }
 
 .download-container {
     margin:auto auto;
-    display: inline-block;
-    vertical-align: middle;
     width: 700px;
     color: $black-hover;
 }

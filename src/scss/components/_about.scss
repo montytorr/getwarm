@@ -1,18 +1,29 @@
 .about-component {
     text-align: center;
     position: relative;
-    height: calc(100% - 625px);
+    height: 400px;
     background-color: $grey;
     box-sizing: border-box;
     border-top: 2px solid $dark-grey;
 }
 
 .about-container {
+    padding-top: 25px;
+    font-family: Menlo, Monaco, Consolas, monospace;
+    color: #7E7E7E;
+    text-align: justify;
+    justify-content: center;
+    margin:auto auto;
     background-color: $grey;
-    display: inline-block;
-    vertical-align: middle;
-    width: 500px;
-    height: 200px;
+    width: 700px;
+    height: 300px;
     line-height: normal;
-    color: #373737;
+}
+
+.about-footer {
+    background-color: #fff;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+    border-top: 2px solid $dark-grey;
 }
