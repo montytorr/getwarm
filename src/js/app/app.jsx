@@ -2,7 +2,7 @@ var React = require('react')
 var $ = require('jquery');
 var Index = require('./index.jsx');
 var Man = require('./man.jsx');
-var Warm = require('warm');
+var Warm = require('warm-react');
 var classie = require('classie');
 
 var WarmApp = React.createClass({

@@ -1,6 +1,6 @@
 var React = require('react')
 var $ = require('jquery');
-var Warm  = require('warm');
+var Warm  = require('warm-react');
 var showdown  = require('showdown'),
 converter = new showdown.Converter();
 

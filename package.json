@@ -23,7 +23,7 @@
     "require-dir": "^0.3.0",
     "showdown": "^1.2.3",
     "vinyl-source-stream": "^1.1.0",
-    "warm": "git+https://github.com/maestro-tech/warm.git"
+    "warm-react": "git://github.com/maestro-tech/warm.git#dev"
   },
   "devDependencies": {
     "browser-sync": "^1.3.6",

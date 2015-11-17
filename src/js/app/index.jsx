@@ -1,6 +1,6 @@
 var React = require('react')
 var classie = require('classie');
-var Warm = require('Warm');
+var Warm = require('Warm-react');
 
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;

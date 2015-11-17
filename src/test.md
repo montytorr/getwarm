@@ -10,7 +10,7 @@
 ###How to use it?
 - First :
 ```
-var Warm = require('Warm');
+var Warm = require('warm-react');
 ```
 
 - And then just simply call:

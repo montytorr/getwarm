@@ -11,7 +11,7 @@
     "gulp-compass": "^2.1.0",
     "gulp-plumber": "^1.0.1",
     "react": "^0.14.0",
-    "warm": "git://github.com/maestro-tech/warm.git"
+    "warm-react": "git://github.com/maestro-tech/warm.git#dev"
   },
   "devDependencies": {
     "reactify": "^1.1.1",
