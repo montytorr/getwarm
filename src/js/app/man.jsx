@@ -50,7 +50,7 @@ var ManPage = React.createClass({
                                 Example = Example[layer];
                             })
                             var Example = React.createFactory(Example);
-                            return (<div className='sandbox' key={"sandbox"+index}> <Example key={"sandbox-example"+index} className="example"/> </div>);
+                            return (<div className='sandbox' key={"sandbox"+index}> <div className="sand-container"><Example key={"sandbox-example"+index} className="example"/></div></div>);
                         } else if (value.charAt(0) == '£') {
                             value = value.replace(/\£/g, '').trim().toLowerCase();
                             return <div key={"empty"+index} id={value}></div>
