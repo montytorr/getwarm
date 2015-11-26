@@ -32,6 +32,7 @@ var Index = React.createClass({
     render: function() {
         var that = this;
         this.changeQuote();
+        console.log(Warm);
         return (
             <div id="main-container" className="main-container">
                 <div className="download-component">

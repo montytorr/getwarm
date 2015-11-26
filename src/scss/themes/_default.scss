@@ -2,42 +2,9 @@
 /****  COLORS
 /*******************************************************************************/
 /*-----  MAIN  ------------------------------------------------------*/
-$w-color-main : #BD1622;
-$w-color-main-text : #FDFEFE;
-$w-color-main-border : #A1A1A1;
-
-/*-----  BACKGROUN  -------------------------------------------------*/
-$w-color-background-login : #FDFEFE;
-$w-color-background-inputs : #E5E5E5;
-$w-color-background-error : #881820;
-$w-color-background-success : #80C684;
-
-/*-----  TEXT  ------------------------------------------------------*/
-$w-color-text-inputs : #A1A1A1;
-
-/*-----  BUTTONS  ---------------------------------------------------*/
-$w-color-button-round : #fff;
-$w-color-button-dot1 : #BD1622;
-$w-color-button-dot2 : #fff;
-$w-color-button-dot3 : #A1A1A1;
-
-/*-----  LISTS  -----------------------------------------------------*/
-$w-color-list-dot-title : #000;
-$w-color-list-dot-sub : #A1A1A1;
-
-/*******************************************************************************/
-/****  FONTS
-/*******************************************************************************/
-/*-----  IMPORT  ----------------------------------------------------*/
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200);
-
-/*-----  DEFINE  ----------------------------------------------------*/
-$w-font-default: 'Source Sans Pro', sans-serif;
-
-
+$w-color-main : #5CA9F0;
 
 /*******************************************************************************/
 /****  IMG
 /*******************************************************************************/
-$w-img-background-app: url("../img/astrolight-background.jpg") no-repeat center center fixed;
-$w-img-background-button: url("../img/astrolight-profile.png") no-repeat center center;
+$w-img-background-button: url("../img/hercules-profile.png") no-repeat center center;

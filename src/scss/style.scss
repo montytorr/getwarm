@@ -8,16 +8,13 @@
 @import "fonts";
 @import "reset";
 @import "base";
+@import "../../node_modules/warm-react/src/scss/themes/_default.scss";
+
+/*----------------------  WARM  ------------------------------------------------*/
+@import "../../node_modules/warm-react/src/scss/_main.scss";
 
 // COMPONENTS STYLES -----------------------------------------------------------
 @import "components/menu";
 @import "components/download";
 @import "components/about";
-
 @import "components/man";
-
-// WARM THEME ------------------------------------------------------------------
-@import "themes/astrolight";
-
-// WARM STYLES -----------------------------------------------------------------
-@import "../../node_modules/warm-react/src/scss/_main.scss";
