@@ -1,4 +1,4 @@
-var React = require('react')
+var React = global.React || require('react');
 var $ = require('jquery');
 var Warm  = require('warm-react');
 var showdown  = require('showdown'),
