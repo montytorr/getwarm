@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 var browserify = require('browserify');       // Bundles JS
-var reactify = require('reactify');           // Transforms React JSX to JS
+var babelify = require('babelify');           // Transforms React JSX to JS
 var source = require('vinyl-source-stream');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
@@ -31,7 +31,10 @@ gulp.task('html', function() {
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('js-watch', ['clean','compass-watch'], function() {
     browserify(path.app_js)
-    .transform({global:true},reactify)
+    .transform({global:true}, babelify.configure({
+        // tells the Babel parser that the code uses React's JSX.
+        presets: ["react"]
+    }))
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./src/js'))
