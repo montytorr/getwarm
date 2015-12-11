@@ -6,7 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var zip = require('gulp-zip');
 var browserify = require('browserify');       // Bundles JS
-var reactify = require('reactify');           // Transforms React JSX to JS
+var babelify = require('babelify');           // Transforms React JSX to JS
 var source = require('vinyl-source-stream');
 
 var moduleName = 'getwarm';
@@ -85,7 +85,10 @@ gulp.task('compass', function() {
 ////////////////////////////////////////////////////////////////////////////////
 gulp.task('js', function() {
     browserify('./src/js/main.js')
-    .transform({global:true},reactify)
+    .transform({global:true}, babelify.configure({
+        // tells the Babel parser that the code uses React's JSX.
+        presets: ["react"]
+    }))
     .bundle()
     .pipe(source('bundle.js'))
     .pipe(gulp.dest('./docker/dist/js'))
