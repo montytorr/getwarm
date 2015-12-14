@@ -1,11 +1,21 @@
 var React = require('react')
 var $ = require('jquery');
 var Index = require('./index.jsx');
-var Man = require('./man.jsx');
 var Warm = require('warm-react');
 var classie = require('classie');
 
+var SimplePageScrollMixin = {
+    componentDidMount: function() {
+        var main = document.getElementById('main-container');
+        main.addEventListener('scroll', this.onScroll, false);
+    },
+    componentWillUnmount: function() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+};
+
 var WarmApp = React.createClass({
+    mixins: [SimplePageScrollMixin],
     getInitialState: function() {
         return ({
             listing: [],
@@ -14,91 +24,95 @@ var WarmApp = React.createClass({
             path: {target : Warm, hist : 'Warm'}
         });
     },
-    pageChanger: function () {
-        if (this.state.page.name == 'Index') {
-            return (<Index />);
-        }
-        else {
-            return (<Man path={this.state.page.path} />);
-        }
-    },
-    goBackConstructor: function () {
-        var previous = this.state.path.hist.split("/");
-        previous = previous[previous.length - 1];
-        if (this.state.path.hist !== 'Warm') {
-            return (<li className='menu-sub-title' key='back'><a onClick={this.goBack}>{previous.charAt(0).toUpperCase() + previous.substring(1).toLowerCase()}</a></li>);
-        }
-    },
-    goBack: function () {
-        var hist = this.state.path.hist.split("/");
-        hist.splice(-1,1);
-        hist.splice(0,1);
-        var newTarget = Warm;
-        var newHist = 'Warm';
-        hist.map(function (layer) {
-            newTarget = newTarget[layer];
-            newHist = newHist + '/' + layer;
+    onScroll: function() {
+        var sands = document.getElementsByClassName('sand-container');
+        var main = document.getElementById('main-container');
+        Object.keys(sands).map(function (key) {
+            var elems = document.getElementsByClassName('sub-elem');
+            var sand = sands[key];
+            if (main.scrollTop > sand.offsetParent.offsetTop - 100 && main.scrollTop < sand.offsetParent.offsetTop + 400) {
+                Object.keys(elems).map(function (elemKey) {
+                    if (elemKey == key) {
+                        $(elems[elemKey]).addClass("targeted");
+                    }
+                })
+            } else {
+                Object.keys(elems).map(function (elemKey) {
+                    if (elemKey == key) {
+                        $(elems[elemKey]).removeClass("targeted");
+                    }
+                })
+            }
         })
-        this.setState({
-            path : {target : newTarget, hist : newHist}
-        });
     },
-    subMenu: function (target) {
-        this.setState({
-            path : {target : this.state.path.target[target], hist : this.state.path.hist + '/' + target},
-            page: {name : 'Man', path : this.state.path.target[target].readme}
-        }, function () {
-            document.getElementById("main-container").scrollTop = 0;
-        });
+    goTop: function () {
+        var main = document.getElementById('main-container');
+        main.scrollTop = document.documentElement.scrollTop = 0;
     },
-    manPage: function(i, path, id) {
+    handleClick: function (e) {
+        var main = document.getElementById('main-container');
+        var elems = document.getElementsByClassName('sub-elem');
+        Object.keys(elems).map(function (elemKey) {
+            if (e.target.parentElement == elems[elemKey]) {
+                var sands = document.getElementsByClassName('sand-container');
+                Object.keys(sands).map(function (key) {
+                    if (elemKey == key) {
+                        main.scrollTop = sands[key].offsetParent.offsetTop - 100;
+                    }
+                })
+            }
+        })
         var targetedList = document.getElementsByClassName('targeted');
         for (var j = 0; j < targetedList.length; j++) {
             classie.remove(targetedList[j], 'targeted');
         }
-        classie.add(this.refs[i], 'targeted');
-        this.setState({
-            page: {name : 'Man', path : this.state.path.target.readme}
-        });
-        document.getElementById(id).scrollIntoView();
+        classie.add(e.target.parentElement, 'targeted');
     },
-    indexPage: function() {
-        var targetedList = document.getElementsByClassName('targeted');
-        for (var j = 0; j < targetedList.length; j++) {
-            classie.remove(targetedList[j], 'targeted');
-        }
-        this.setState({
-            page: {name : 'Index', path : null},
-            path: {target : Warm, hist : 'Warm'}
-        });
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    subGen: function (menuName) {
+        var i = 0;
+        var that = this;
+        return (
+            <div>
+                <ul>
+                    {
+                        Object.keys(Warm[menuName]).map (function (subName) {
+                            var temp = Warm[menuName];
+                            var subVal = temp[subName];
+                            if (subName != 'readme'){
+                                return (<li className='sub-elem' key={i++}><a onClick={that.handleClick}>{subName.charAt(0).toUpperCase() + subName.substring(1).toLowerCase()}</a></li>);
+                            }
+                        })
+                    }
+                </ul>
+            </div>
+        );
     },
     render: function() {
-        that = this;
         var i = 0;
         return (
             <div className="view-container">
                 <div className="left-menu">
                     <ul>
-                        <li className='menu-title' key={i++}><a onClick={that.indexPage}>WARM</a></li>
-                        {that.goBackConstructor()}
+                        <li className='menu-title' key={i++}><a onClick={this.goTop}>WARM</a></li>
                         {
-                            Object.keys(that.state.path.target).map (function (layerName) {
-                                var layerVal = that.state.path.target[layerName];
-                                var boundManPage = that.manPage.bind(that, i, layerVal, layerName.toLowerCase());
-                                var boundSubMenu = that.subMenu.bind(that,layerName);
-                                if (layerName != 'readme' && layerName != 'loaders'){
-                                    if (layerVal.constructor == Object) {
-                                        return (<li className='menu-elem' key={i++}><a onClick={boundSubMenu}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
-                                    } else {
-                                        return (<li className='menu-elem man' ref={i} key={i++}><a onClick={boundManPage}>{layerName.charAt(0).toUpperCase() + layerName.substring(1).toLowerCase()}</a></li>);
+                            Object.keys(Warm).map (function (menuName) {
+                                var menuVal = Warm[menuName];
+                                if (menuName != 'readme'){
+                                    if (menuVal.constructor == Object) {
+                                        var sub = this.subGen.bind(this, menuName);
+                                        return (
+                                            <div>
+                                                <li className='menu-elem' key={i++}><a onClick={this.handleClick}>{menuName.charAt(0).toUpperCase() + menuName.substring(1).toLowerCase()}</a></li>
+                                                {sub()}
+                                            </div>
+                                        );
                                     }
                                 }
-                            }, that)
+                            }, this)
                         }
                     </ul>
                 </div>
-                {that.pageChanger()}
+                <Index />
             </div>
         );
     }

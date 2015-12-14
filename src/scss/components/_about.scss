@@ -1,10 +1,12 @@
 .about-component {
+    margin-bottom: 50px;
     text-align: center;
     position: relative;
     height: 600px;
     background-color: $grey;
     box-sizing: border-box;
     border-top: 2px solid $dark-grey;
+    border-bottom: 2px solid $dark-grey;
 }
 
 .about-container {
@@ -18,12 +20,4 @@
     width: 700px;
     height: 500px;
     line-height: normal;
-}
-
-.about-footer {
-    background-color: #fff;
-    width: 100%;
-    height: 100px;
-    box-sizing: border-box;
-    border-top: 2px solid $dark-grey;
 }

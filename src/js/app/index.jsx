@@ -1,6 +1,7 @@
 var React = require('react')
 var classie = require('classie');
 var Warm = require('warm-react');
+var Man = require('./man.jsx');
 
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -32,7 +33,6 @@ var Index = React.createClass({
     render: function() {
         var that = this;
         this.changeQuote();
-        console.log(Warm);
         return (
             <div id="main-container" className="main-container">
                 <div className="download-component">
@@ -82,9 +82,8 @@ var Index = React.createClass({
                             Or you can directly modify the code to explore all the possibilities by yourself helped of course by the documentation on your left ! Enjoy :)
                         </p>
                     </div>
-                    <div className="about-footer">
-                    </div>
                 </div>
+                <Man />
             </div>
         );
     }
