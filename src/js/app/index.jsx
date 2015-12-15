@@ -2,18 +2,23 @@ var React = require('react')
 var classie = require('classie');
 var Warm = require('warm-react');
 var Man = require('./man.jsx');
+var TimerMixin = require('react-timer-mixin');
 
 function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 var Index = React.createClass({
+    mixins: [TimerMixin],
     getInitialState: function() {
         return ({
             readme: '',
             quote: 'Be',
             modal: false
         });
+    },
+    componentDidMount: function () {
+        this.changeQuote();
     },
     downloadSK: function () {
         window.open('./starter-kit.zip', 'Download');
@@ -24,15 +29,15 @@ var Index = React.createClass({
     changeQuote: function () {
         that = this;
         var quotes = ['Be', 'Get', 'Have', 'Become', 'Join', 'Feel', 'Steal', '42', 'I\'m', 'Oh my', 'Love', 'Like'];
-        setTimeout(function(){
-            that.setState({
+        this.setTimeout(function(){
+            this.setState({
                 quote: quotes[getRandomIntInclusive(0, quotes.length - 1)]
             });
-        },5000);
+            this.changeQuote();
+        }.bind(this),5000);
     },
     render: function() {
         var that = this;
-        this.changeQuote();
         return (
             <div id="main-container" className="main-container">
                 <div className="download-component">
@@ -77,16 +82,16 @@ var Index = React.createClass({
                         <p>
                             <br></br>
                             WARM is a package containing many ReactJs modules comparable to bootstrap : you can use any of this module separately to create your own WebApp.<br></br>
-                            By clicking the download button you obtain the 'starter-kit' witch gives you acess to a simple environment with a gulp and node modules.<br></br><br></br>
-                            You can aleready launch the demo  by typing - make warm - in your term at rhe root of the starter kit.<br></br>
-                            Or you can directly modify the code to explore all the possibilities by yourself helped of course by the documentation on your left ! Enjoy :)
-                        </p>
-                    </div>
-                </div>
-                <Man />
-            </div>
-        );
-    }
+                        By clicking the download button you obtain the 'starter-kit' witch gives you acess to a simple environment with a gulp and node modules.<br></br><br></br>
+                    You can aleready launch the demo  by typing - make warm - in your term at rhe root of the starter kit.<br></br>
+                Or you can directly modify the code to explore all the possibilities by yourself helped of course by the documentation on your left ! Enjoy :)
+            </p>
+        </div>
+    </div>
+    <Man />
+</div>
+);
+}
 });
 
 module.exports = Index;

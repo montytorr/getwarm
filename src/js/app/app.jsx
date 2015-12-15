@@ -79,7 +79,7 @@ var WarmApp = React.createClass({
                             var temp = Warm[menuName];
                             var subVal = temp[subName];
                             if (subName != 'readme'){
-                                return (<li className='sub-elem' key={i++}><a onClick={that.handleClick}>{subName.charAt(0).toUpperCase() + subName.substring(1).toLowerCase()}</a></li>);
+                                return (<li className='sub-elem' key={"sub"+i++}><a onClick={that.handleClick}>{subName.charAt(0).toUpperCase() + subName.substring(1).toLowerCase()}</a></li>);
                             }
                         })
                     }
@@ -101,8 +101,8 @@ var WarmApp = React.createClass({
                                     if (menuVal.constructor == Object) {
                                         var sub = this.subGen.bind(this, menuName);
                                         return (
-                                            <div>
-                                                <li className='menu-elem' key={i++}><a onClick={this.handleClick}>{menuName.charAt(0).toUpperCase() + menuName.substring(1).toLowerCase()}</a></li>
+                                            <div key={"menu-div"+i++}>
+                                                <li className='menu-elem' key={"menu"+i++}><a onClick={this.handleClick}>{menuName.charAt(0).toUpperCase() + menuName.substring(1).toLowerCase()}</a></li>
                                                 {sub()}
                                             </div>
                                         );

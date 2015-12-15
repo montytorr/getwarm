@@ -49,13 +49,14 @@
     margin-bottom: 25px;
     .man-content {
         h1 {
+            margin-top: 50px;
             font-family: $light-font;
             font-weight: bold;
             font-size: 4.5em;
             background-color: $red;
             height:100px;
-            line-height: 100px;
-            color:rgba(0, 0, 0, 0.5);
+            line-height: 90px;
+            color: #fff;
             text-indent: 25px;
         }
         h2 {
@@ -63,56 +64,66 @@
             font-weight: bold;
             font-size: 2.5em;
             background-color: $blue;
-            color:rgba(0,0,0,0.4);
+            color: #fff;
             padding:15px;
             margin-top: 50px
         }
         h3 {
-            font-family: "Oxygen", sans-serif;
-            font-size: 2.2em;
-            font-weight: 200;
-            color: #E15C56;
+            font-family: $light-font;
+            font-size: 25px;
+            font-weight: 600;
+            color: $green;
             text-indent: 25px;
-            margin-top: 45px;
+            margin: 45px 0 25px 0;
         }
         h4 {
+            color: $blue;
             font-family: $light-font;
             font-weight: bold;
-            font-size: 1.7em;
-            margin: 25px 0 0 50px;
+            font-size: 20px;
+            margin: 0 0 0 50px;
+            em {
+                color: $red;
+            }
+        }
+        h5 {
+            font-family: $light-font;
+            font-size: 18px;
+            line-height: 20px;
+            color: $green;
         }
         ul {
             margin: 25px 0 0 50px;
         }
         li {
             margin-top: 25px;
-            font-family: "Oxygen", sans-serif;
+            font-family: $light-font;
             font-size: 1.3rem;
             line-height: 1.7rem;
         }
         p {
-            font-family: "Oxygen", sans-serif;
-            font-size: 1.3rem;
-            line-height: 1.7rem;
+            font-family: $light-font;
+            font-size: 18px;
+            line-height: 20px;
         }
         pre code {
             display: block;
-            background: RGBA(45, 50, 59, 1);
-            color: RGBA(180, 187, 198, 1);
+            background-color: $black-hover;
+            color: #CCC;
             font-family: Menlo, Monaco, Consolas, monospace;
             font-size: 1rem;
             line-height: 1.5;
             border: 1px solid #ccc;
-            margin: 25px 25px 0 50px;
+            margin: 0 25px 0 50px;
             padding: 15px;
         }
         blockquote {
             color: #939393;
             font-family: $light-font;
             font-weight: 400;
-            font-size: 2em;
+            font-size: 20px;
             border-left: 5px solid $grey;
-            margin: 25px 0 0 50px;
+            margin: 0 0 0 50px;
             padding: 20px;
         }
         img {

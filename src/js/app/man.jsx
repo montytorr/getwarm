@@ -27,10 +27,13 @@ var ManPage = React.createClass({
                         Example = Example[layer];
                     })
                     var Example = React.createFactory(Example);
-                    man.push(<div className='sandbox' key={"sandbox"+index}> <div className="sand-container"><Example key={"sandbox-example"+index} demo={true} className="gw-example"/></div></div>);
-                } else if (value.charAt(0) == '£') {
-                    value = value.replace(/\£/g, '').trim().toLowerCase();
-                    man.push(<div key={"empty"+index} id={value}></div>);
+                    man.push(
+                        <div className='sandbox' key={"sandbox"+index}>
+                            <div className="sand-container">
+                                <Example key={"sandbox-example"+index} demo={true} className="gw-example"/>
+                            </div>
+                        </div>
+                    );
                 } else {
                     man.push(<div className="man-content" key={"man"+index} dangerouslySetInnerHTML={{__html: value}} />);
                 }
@@ -47,7 +50,8 @@ var ManPage = React.createClass({
     },
     componentDidMount: function() {
         Async.eachSeries(Object.keys(Warm), function (component, asyncCB) {
-            this.manGet("https://raw.githubusercontent.com/maestro-tech/warm/master/src/components/"+component.toLowerCase()+"/readme.md",
+            // this.manGet("https://raw.githubusercontent.com/maestro-tech/warm/master/src/components/"+component.toLowerCase()+"/readme.md",
+            this.manGet("js/app/readme.md",
             function () {
                 asyncCB();
             });
