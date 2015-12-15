@@ -50,8 +50,8 @@ var ManPage = React.createClass({
     },
     componentDidMount: function() {
         Async.eachSeries(Object.keys(Warm), function (component, asyncCB) {
-            // this.manGet("https://raw.githubusercontent.com/maestro-tech/warm/master/src/components/"+component.toLowerCase()+"/readme.md",
-            this.manGet("js/app/readme.md",
+            this.manGet("https://raw.githubusercontent.com/maestro-tech/warm/master/src/components/"+component.toLowerCase()+"/readme.md",
+            // this.manGet("js/app/readme.md",
             function () {
                 asyncCB();
             });
