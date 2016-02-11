@@ -3,7 +3,7 @@ NAME = getwarm
 SHA1 = $(shell git log -1 --pretty=oneline | cut -c-10)
 BRANCH = $(shell git branch -a --contains $(SHA1) | egrep '(remotes/|\*)' | egrep -v "(HEAD|detached)" | head -1 | sed -e "s/\* //" -e "s/.*\///")
 VERSION = $(BRANCH)-$(SHA1)
-REGISTRY = registry.ticket-tool.com:5000
+REGISTRY = docker-registry.ticket-tool.com:5000
 
 gulp-build-local:
 	# Build the front static website
